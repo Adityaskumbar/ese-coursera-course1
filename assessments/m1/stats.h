@@ -21,20 +21,13 @@
 #ifndef __STATS_H__
 #define __STATS_H__
 
-/* Add Your Declarations and Function Comments here */ 
-
-/**
- * @brief <Add Brief Description of Function Here>
- *
- * <Add Extended Description Here>
- *
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- *
- * @return <Add Return Informaiton here>
- */
+void print_statistics(unsigned char data[], unsigned int length);
+void print_array(unsigned char data[], unsigned int length);
+unsigned char find_median(unsigned char data[], unsigned int length);
+unsigned char find_mean(unsigned char data[], unsigned int length);
+unsigned char find_maximum(unsigned char data[], unsigned int length);
+unsigned char find_minimum(unsigned char data[], unsigned int length);
+void sort_array(unsigned char data[], unsigned int length);
 
 
-#endif /* __STATS_H__ */
+#endif 
