@@ -1,6 +1,5 @@
 #******************************************************************************
-# Copyright (C) 2017 by Alex Fosdick - University of Colorado
-#
+# Copyright (C) 2017 by Alex Fosdick - University of Colora#
 # Redistribution, modification or use of this software in source or binary
 # forms is permitted as long as the files maintain this copyright. Users are 
 # permitted to modify this and use it to learn about the field of embedded
@@ -23,19 +22,26 @@
 #------------------------------------------------------------------------------
 include sources.mk
 
-# Platform Overrides
-PLATFORM = 
+# Host platform configuration
+PLATFORM = HOST
 
-# Architectures Specific Flags
-LINKER_FILE = 
-CPU = 
-ARCH = 
-SPECS = 
+CC = gcc
+LD = gcc
 
-# Compiler Flags and Defines
-CC = 
-LD = 
-LDFLAGS = 
-CFLAGS = 
-CPPFLAGs = 
+CFLAGS = -Wall -Werror -Wno-pointer-sign -g -O0 -std=c99
+CPPFLAGS = -DHOST $(INCLUDES)
+LDFLAGS =
 
+TARGET = m2.out
+OBJS = $(SOURCES:.c=.o)
+
+%.o: %.c
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
+
+.PHONY: build clean
+
+build: $(OBJS)
+	$(LD) $(OBJS) $(LDFLAGS) -o $(TARGET)
+
+clean:
+	rm -f $(OBJS) $(TARGET)
